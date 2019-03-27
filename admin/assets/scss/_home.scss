@@ -1,0 +1,67 @@
+.view-home {
+    .homeTitle {
+        padding-bottom: 24px;
+    }
+    .section {
+        display: table;
+        .homeLink {
+            color: $greenLink;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        h3 {
+            font-size: 20px;
+            color: $greenLink;
+            font-weight: bold;
+        }
+        .homeSectionText {
+            font-size: 18px;
+        }
+        .sectionContent,
+        .sectionIcon {
+            display: table;
+            min-height: 215px;
+            .content,
+            i {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+
+/*---------- TABLET ----------*/
+
+@media (max-width: 991px) {
+    .home {
+        .section {
+            .box-section:nth-child(3n) {
+                clear: both;
+            }
+            .sectionContent,
+            .sectionIcon {
+                min-height: 95px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+
+/*---------- MOBILE ----------*/
+
+@media (max-width: 767px) {}
+
+@media (max-width: 480px) {}
+
+@media print {
+    .home {
+        .section {
+            .sectionContent,
+            .sectionIcon {
+                min-height: 0 !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,235 @@
+body {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 16px;
+}
+a:hover {
+    cursor: pointer;
+}
+.full-heigth {
+    height: 100%;
+    position: relative;
+}
+.content-text {
+    margin-bottom: 25px;
+}
+h1 {
+    &+.content-text {
+        margin-top: 14px;
+    }
+}
+
+/*---------- LOADING ----------*/
+.no-scroll{overflow: none;}
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    .loading {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -75px 0 0 -75px;
+        text-align: center;
+        @include background(inline-image('LOADING.gif') no-repeat center 25% white);
+        background-size: 50%;
+        @include border-radius(5px);
+        @include box-shadow(rgba(0, 0, 0, 0.8) 0 1px 5px 0);
+        span {
+            position: absolute;
+            width: 100%;
+            bottom: 10%;
+            left: 0;
+        }
+    }
+}
+
+/*---------- HEADER ----------*/
+
+#header {
+    #banner {
+        position: relative;
+        height: 200px;
+        background: $greenTopBanner;
+        .breadcrumb {
+            background: transparent;
+            border-radius: 0;
+            color: white;
+            top: 50%;
+            margin: -75px 0 0;
+            padding: 0;
+            position: absolute;
+            a {
+                color: white;
+            }
+            >li+li:before {
+                @include set-icon("\f125", false);
+                font-size: 10px;
+                color: white;
+                padding: 0 10px;
+            }
+            >.active {
+                color: white;
+            }
+        }
+        .title-site {
+            color: white;
+            float: left;
+            position: relative;
+            top: 50%;
+            margin-top: -42px;
+            h1 {
+                font-weight: bold;
+                font-size: 50px;
+                line-height: 60px;
+                margin: 0;
+            }
+            h3 {
+                font-size: 16px;
+                margin: 18px 0 0;
+            }
+            &:hover,
+            &:focus {
+                text-decoration: none;
+            }
+        }
+        .logo-rapdin {
+            height: 100%;
+            padding: 4% 0 2%;
+            position: absolute;
+            right: 15px;
+        }
+    }
+    #menuHeader {
+        line-height: 42px;
+        padding: 19px 0;
+        border-bottom: 1px solid $grayLight;
+        .menu-dropdown {
+            >ul>li {
+                margin: 0 10px;
+                &:first-child {
+                    margin-left: 0;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+            a.active {
+                color: $greenLink;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+/*---------- CONTENT ----------*/
+
+.view-content {
+    position: relative;
+    margin: 50px 0 0;
+    padding: 0 0 125px;
+}
+
+/*---------- FOOTER ----------*/
+
+#footer {
+    color: $grayTextDark;
+    margin: 0;
+    padding: 0px 0 0;
+    border-top: 1px solid $grayLight;
+    .tel {
+        font-size: 23px;
+        color: $grayTextVeryDark;
+        display: block;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .type {
+        font-size: 14px;
+        margin: 7px 0 30px;
+        &:last-child {
+            margin: 7px 0 0;
+        }
+    }
+    i {
+        width: 30px;
+        text-align: left;
+        display: inline-block;
+        font-size: 1.2em;
+    }
+    ul {
+        font-family: Arial, sans-serif;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+            margin: 18px 0px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &:first-child {
+                margin-top: 8px;
+            }
+            a {
+                color: $grayTextDark;
+                display: block;
+                &.active {
+                    color: $greenLink;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    footer {
+        background: $grayBoxContent;
+        margin: 0;
+        font-size: 14px;
+        ul {
+            li {
+                display: inline-block;
+                &,
+                &:last-child,
+                &:last-child {
+                    margin: 10px;
+                }
+                a {
+                    color: $grayField;
+                    &.active {
+                        color: $greenLink;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        .lang {
+            li {
+                margin: 10px;
+            }
+        }
+    }
+}
+@media print {
+    #footer,
+    #header,
+    .rightBox,
+    .accountInfo {
+        display: none;
+    }
+    .view-content {
+        margin: 0;
+        padding: 0;
+    }
+    .btn.btn-blue,
+    button.btn,
+    a.btn,
+    .btn {
+        color: #000 !important;
+        background: none !important;
+    }
+}

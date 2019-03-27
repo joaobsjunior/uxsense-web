@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 section">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="homeTitle">
+                                <h1 class="title">{{'pageTeam-PageTitle' | translate}}</h1>
+                                <h2>{{subgroup.group.name}} - {{subgroup.name}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-9">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-green form-control" ng-click="newTeam()">{{'field-Create' | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr class="hidden-xs hidden-sm"/>
+                        </div>
+                    </div>
+                    <div class="box-fixed" ng-show="showFormBox">
+                        <div class="inner-box withScroll">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <form name="formTeam" ng-submit="formSave($event)" class="box-gray" novalidate>
+                                            <input type="hidden" name="id" ng-model="form.id" ng-required="isEdit">
+                                            <input type="hidden" name="subgroup" ng-model="form.subgroup" required>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-Name' | translate}}*</label>
+                                                                <input type="text" class="form-control" name="name" ng-model="form.name" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-Unit' | translate}}*</label>
+                                                                <select name="unit" class="form-control" ng-model="form.unit" ng-options="option.id as option.name for option in form.unitList" required>
+                                                                    <option value="">{{'field-SelectUnit' | translate}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                               <div class="row">
+                                                                  <div class="col-xs-12">
+                                                                     <label for="">&nbsp;</label>
+                                                                  </div>
+                                                               </div>
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <button type="submit" class="btn btn-blue">{{'field-Save' | translate}}</button>
+                                                                        <button type="button" class="btn btn-danger" ng-click="formCancel()">{{'field-Cancel' | translate}}</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-resposive">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>{{'field-Number' | translate}}</th>
+                                            <th>{{'field-Name' | translate}}</th>
+                                            <th>{{'field-Unit' | translate}}</th>
+                                            <th>{{'field-Action' | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="team in teams track by $index">
+                                            <td>
+                                                {{$index+1}}
+                                            </td>
+                                            <td>
+                                                {{team.name}}
+                                            </td>
+                                            <td>
+                                                {{team.unit.name}}
+                                            </td>
+                                            <td>
+                                                <button type="button" ng-click="editTeam(team)" class="btn btn-warning" title="{{'field-Edit' | translate}}">
+                                                    <i class="ion-edit"></i>
+                                                </button>
+                                                <button type="button" ng-click="deleteTeam(team)" class="btn btn-danger" title="{{'field-Delete' | translate}}">
+                                                    <i class="ion-trash-a"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

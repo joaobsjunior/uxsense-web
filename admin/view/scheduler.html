@@ -1,0 +1,263 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 section">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="homeTitle">
+                                <h1 class="title">{{'pageScheduler-PageTitle' | translate}}</h1>
+                                <h4>
+                                    <strong>{{'field-Question' | translate}}</strong> {{question}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-9">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-green form-control" ng-click="newScheduler()">{{'field-Create'
+                                    | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr class="hidden-xs hidden-sm" />
+                        </div>
+                    </div>
+                    <div class="box-fixed" ng-show="showFormBox">
+                        <div class="inner-box withScroll">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <form name="formScheduler" ng-submit="formSave($event)" class="box-gray"
+                                            novalidate>
+                                            <input type="hidden" ng-model="form.id">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-Question' | translate}}*</label>
+                                                                <select name="question" class="form-control" ng-model="form.question"
+                                                                    ng-options="option.id as option.question for option in form.questionList"
+                                                                    ng-disabled="inQuestion" required>
+                                                                    <option value="">{{'field-SelectQuestion' |
+                                                                        translate}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <div class="form-group">
+                                                                <label>{{'field-SchedulerTo' | translate}}:</label>
+                                                                <br>
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" name="typeScheduler" ng-model="form.typeScheduler"
+                                                                        value="admin"> {{'field-SchedulerPerAdmin' |
+                                                                    translate}}
+                                                                </label>
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" name="typeScheduler" ng-model="form.typeScheduler"
+                                                                        value="group"> {{'field-SchedulerPerGroup' |
+                                                                    translate}}
+                                                                </label>
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" name="typeScheduler" ng-model="form.typeScheduler"
+                                                                        value="subgroup">
+                                                                    {{'field-SchedulerPerSubgroup' | translate}}
+                                                                </label>
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" name="typeScheduler" ng-model="form.typeScheduler"
+                                                                        value="custom"> {{'field-SchedulerCustom' |
+                                                                    translate}}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-Group' | translate}}*</label>
+                                                                <select name="group" ng-disabled="['admin'].indexOf(form.typeScheduler) !== -1"
+                                                                    ng-required="['admin'].indexOf(form.typeScheduler) === -1"
+                                                                    class="form-control" ng-model="form.group"
+                                                                    ng-change="groupOptionChange()" ng-options="option.id as option.name for option in form.groupList">
+                                                                    <option value="">{{'field-SelectGroup' |
+                                                                        translate}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-Subgroup' | translate}}*</label>
+                                                                <select name="subgroup" ng-disabled="['admin','group'].indexOf(form.typeScheduler) !== -1"
+                                                                    ng-required="['admin','group'].indexOf(form.typeScheduler) === -1"
+                                                                    class="form-control" ng-model="form.subgroup"
+                                                                    ng-change="subgroupOptionChange()" ng-options="option.id as option.name for option in form.subgroupList">
+                                                                    <option value="">{{'field-SelectSubgroup' |
+                                                                        translate}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-Team' | translate}}*</label>
+                                                                <select name="subgroup" ng-disabled="['admin','group','subgroup'].indexOf(form.typeScheduler) !== -1"
+                                                                    ng-required="['admin','group','subgroup'].indexOf(form.typeScheduler) === -1"
+                                                                    class="form-control" ng-model="form.team"
+                                                                    ng-options="option.id as option.name for option in form.teamList">
+                                                                    <option value="">{{'field-SelectTeam' | translate}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 form-inline">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-CaptureTechnique' | translate}}*</label>
+                                                                <br>
+                                                                <div class="col-sm-6">
+                                                                    <div ng-repeat="emotion in emotions">
+                                                                        <label class="checkbox-inline" ng-click="onClickEmotions()">
+                                                                            <input type="checkbox" id="emotions" name="{{emotion.id}}" ng-model="emotinosChecked[emotion.id]">
+                                                                            {{emotion.name}}
+                                                                        </label>
+                                                                        <br>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label for="">{{'field-CaptureTechnique' | translate}}*</label>
+                                                                        <select name="technique" class="form-control" ng-model="form.technique" ng-options="option.id as option.name for option in form.techniqueList"
+                                                                        ng-change="onChangeTechnique()" required>
+                                                                            <option value="">{{'field-SelectCaptureTechnique' | translate}}</option>
+                                                                        </select>
+                                                                        <p class="help-block">{{form.techniqueDescription}}</p>
+                                                                    </div>
+                                                                </div>
+                                                                {{tecnicaRecomendadaTxt}}
+                                                            </div>
+                                                            <br>
+                                                        </div>
+
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-Date' | translate}}*</label>
+                                                                <div class="input-group input-date">
+                                                                    <input type="text" name="date" class="form-control"
+                                                                        ng-model="form.date" uib-datepicker-popup="dd/MM/yyyy"
+                                                                        is-open="additionalData.openDatePicker"
+                                                                        show-weeks="false" current-text="Hoje"
+                                                                        clear-text="Limpar" close-text="Sair" min-date="minDate"
+                                                                        ng-click="additionalData.openDatePicker = true"
+                                                                        readonly required>
+                                                                    <span class="input-group-btn">
+                                                                        <button type="button" class="btn btn-default"
+                                                                            ng-click="additionalData.openDatePicker = true">
+                                                                            <i class="glyphicon glyphicon-calendar"></i>
+                                                                        </button>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-Timer' | translate}}*</label>
+                                                                <input type="time" name="time" class="form-control"
+                                                                    ng-model="form.time" ng-min="minTime()" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 form-inline">
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <label for="">{{'field-Advanced' | translate}}</label>
+                                                                        <br>
+                                                                        <label class="checkbox-inline">
+                                                                            <input type="checkbox" id="repeater"
+                                                                                ng-model="form.isRepeater">
+                                                                            {{'field-SchedulerRepeater' | translate}}
+                                                                            &nbsp;
+                                                                        </label>
+                                                                        <input type="number" name="qtdWeeks" class="form-control"
+                                                                            ng-model="form.qtdWeeks" ng-required="form.isRepeater"
+                                                                            ng-disabled="!form.isRepeater"> &nbsp;
+                                                                        {{'field-weeks' | translate}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <button type="submit" class="btn btn-blue">{{'field-Save'
+                                                                            | translate}}</button>
+                                                                        <button type="button" class="btn btn-danger"
+                                                                            ng-click="formCancel()">{{'field-Cancel' |
+                                                                            translate}}</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-resposive">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>{{'field-Number' | translate}}</th>
+                                            <th>{{'field-Group' | translate}}</th>
+                                            <th>{{'field-Subgroup' | translate}}</th>
+                                            <th>{{'field-Team' | translate}}</th>
+                                            <th>{{'field-Date' | translate}}</th>
+                                            <th>{{'field-Timer' | translate}}</th>
+                                            <th>{{'field-Action' | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="scheduler in schedulers track by $index">
+                                            <td>
+                                                {{$index+1}}
+                                            </td>
+                                            <td>
+                                                {{scheduler.team.subgroup.group.name}}
+                                            </td>
+                                            <td>
+                                                {{scheduler.team.subgroup.name}}
+                                            </td>
+                                            <td>
+                                                {{scheduler.team.name}}
+                                            </td>
+                                            <td>
+                                                {{scheduler.date+'T'+scheduler.time | date : 'dd/MM/yyyy': UTC}}
+                                            </td>
+                                            <td>
+                                                {{'1970-01-01T'+scheduler.time | date : 'H:mm': UTC}}
+                                            </td>
+                                            <td>
+                                                <button type="button" ng-click="editScheduler(scheduler)" class="btn btn-warning"
+                                                    title="{{'field-Edit' | translate}}">
+                                                    <i class="ion-edit"></i>
+                                                </button>
+                                                <button type="button" ng-click="deleteScheduler(scheduler)" class="btn btn-danger"
+                                                    title="{{'field-Delete' | translate}}">
+                                                    <i class="ion-trash-a"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

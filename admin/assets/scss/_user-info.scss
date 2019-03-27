@@ -1,0 +1,31 @@
+.rightBox {
+    margin-bottom: 50px;
+    background-color: $grayLightBackground;
+    padding-top: 41px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 43px;
+    .welcome {
+        font-size: 22px;
+        color: $greenTextTitle;
+    }
+    .welcomeContent {
+        font-size: 24px;
+        color: $greenTextTitle;
+        font-weight: bold;
+    }
+    .userData {
+        padding-top: 26px;
+        font-size: 16px;
+        color: $grayTextDark;
+        .spanUserData {
+            font-weight: bold;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .rightBox {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+}

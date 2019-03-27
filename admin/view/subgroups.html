@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 section">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="homeTitle">
+                                <h1 class="title">{{group.name}} - {{'pageSubgroup-PageTitle' | translate}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-9">
+                            <div class="form-subgroup">
+                                <button type="button" ng-click="subsubgroupShowCreate = true" class="btn btn-green form-control">{{'field-Create' | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="subsubgroupShowCreate">
+                        <div class="col-xs-12">
+                            <div class="box-gray">
+                                <form action="" name="formRegister" ng-submit="registerSubgroup($event)" novalidate>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-subgroup">
+                                                <label for="">{{'field-Name' | translate}}*</label>
+                                                <input type="text" class="form-control" ng-model="send.name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-subgroup">
+                                                <label for="">{{'field-Info' | translate}}</label>
+                                                <input type="text" class="form-control" ng-model="send.complement">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-md-offset-6 col-xs-6">
+                                            <div class="form-subgroup">
+                                                <label for="" class="hidden-xs">&nbsp;</label>
+                                                <button type="submit" class="btn btn-blue form-control">{{'field-Save' | translate}}</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6">
+                                            <div class="form-subgroup">
+                                                <label for="" class="hidden-xs">&nbsp;</label>
+                                                <button type="button" ng-click="subsubgroupShowCreate = false" class="btn btn-danger form-control">{{'field-Cancel' | translate}}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr class="hidden-xs hidden-sm "/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-resposive">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>{{'field-Number' | translate}}</th>
+                                            <th>{{'field-Name' | translate}}</th>
+                                            <th>{{'field-Info' | translate}}</th>
+                                            <th>{{'field-Action' | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="subgroup in subgroups track by $index">
+                                            <td>
+                                                {{$index+1}}
+                                            </td>
+                                            <td>
+                                                {{subgroup.name}}
+                                                <div class="row" ng-show="subgroup.showEdit">
+                                                    <div class="col-xs-12 form-group">
+                                                        <input type="text" class="form-control" ng-model="subgroup._name">
+                                                    </div>
+                                                    <div class="col-xs-12 form-group">
+                                                        <button type="button" ng-click="changeSubgroup(subgroup)" class="btn btn-success">{{'field-Save' | translate}}</button>
+                                                        <button type="button" ng-click="subgroup.showEdit = false" class="btn btn-danger" title="{{'field-Cancel' | translate}}">{{'field-Cancel' | translate}}</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{subgroup.complement}}
+                                                <div class="row" ng-show="subgroup.showEdit">
+                                                    <div class="col-xs-12 form-group">
+                                                        <input type="text" class="form-control" ng-model="subgroup._complement">
+                                                    </div>
+                                                    <div class="col-xs-12 form-group">
+                                                        <button type="button" ng-click="changeSubgroup(subgroup)" class="btn btn-success">{{'field-Save' | translate}}</button>
+                                                        <button type="button" ng-click="subgroup.showEdit = false" class="btn btn-danger" title="{{'field-Cancel' | translate}}">{{'field-Cancel' | translate}}</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                               <button type="button" ng-click="viewGroup(subgroup)" class="btn btn-info" title="{{'pageSubgroup-TableActionSee' | translate}}">{{'field-Teams' | translate}}</button>
+                                                <button type="button" ng-click="subgroup.showEdit = true" class="btn btn-warning" title="{{'field-Edit' | translate}}">
+                                                    <i class="ion-edit"></i>
+                                                </button>
+                                                <button type="button" ng-click="deleteSubgroup(subgroup)" class="btn btn-danger" title="{{'field-Delete' | translate}}">
+                                                    <i class="ion-trash-a"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

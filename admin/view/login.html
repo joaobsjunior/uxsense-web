@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <h1 class="title">{{'pageLogin-PageTitle' | translate}}</h1>
+            <div class="content-text" ng-bind-html="'pageLogin-Text' | translate"> </div>
+        </div>
+        <div class="col-md-5">
+            <form class="box-gray" name="userForm" ng-submit="submit($event)" novalidate>
+                <div class="form-group">
+                    <input type="email" ng-keypress="onEnter($event)" name="email" class="form-control" ng-model="user.email" placeholder="{{'field-Email' | translate}}*" required> </div>
+                <div class="form-group">
+                    <input type="password" ng-keypress="onEnter($event)" name="password" class="form-control" ng-model="user.password" maxlength="16" placeholder="{{'field-Password' | translate}}*" ui-hide-group-sep required>
+                </div>
+                <button type="submit" class="btn btn-blue"><i class="icon icon-padlock"></i> {{'field-Enter' | translate}}</button>
+                <div class="form-group">
+                    <div class="help-block"><a ui-sref="lostPassword">{{'pageLogin-Lostpassword' | translate}} ›</a></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

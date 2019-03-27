@@ -1,0 +1,57 @@
+<div class="container home">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 section">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="homeTitle">
+                                <h1 class="title">{{'pageHome-Invite' | translate}}</h1>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <hr class="hidden-xs hidden-sm "/>
+                        </div>
+                        <form name="formInvite" ng-submit="submit($event)" class="box-gray" novalidate>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <label for="">{{'field-Name' | translate}}*</label>
+                                                <input type="text" name="name" class="form-control" ng-model="form.name" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">{{'field-Group' | translate}}*</label>
+                                                <select name="group" class="form-control" ng-model="form.group" ng-options="option.id as option.name for option in form.groupList" required>
+                                                    <option value="">{{'field-SelectGroup' | translate}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">{{'field-Email' | translate}}*</label>
+                                                <input type="email" name="email" class="form-control" ng-model="form.email" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-blue">{{'field-Save' | translate}}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

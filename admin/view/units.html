@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 section">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="homeTitle">
+                                <h1 class="title">{{'pageUnits-PageTitle' | translate}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-9">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-green form-control" ng-click="newUnit()">{{'field-Create' | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr class="hidden-xs hidden-sm"/>
+                        </div>
+                    </div>
+                    <div class="box-fixed" ng-show="showFormBox">
+                        <div class="inner-box withScroll">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <form action="" name="formUnit" class="box-gray" ng-submit="formSave($event)" novalidate>
+                                            <input type="hidden" ng-model="form.id">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-Name' | translate}}*</label>
+                                                                <input type="text" class="form-control" maxlength="45" ng-model="form.name" ng-disabled="inFormView" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-Lat' | translate}}</label>
+                                                                <input type="text" class="form-control" ng-model="form.latitude" required ui-number-mask="8" disabled="disabled">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <div class="form-group">
+                                                                <label for="">{{'field-Lng' | translate}}</label>
+                                                                <input type="text" class="form-control" ng-model="form.longitude" required ui-number-mask="8" disabled="disabled">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <div class="form-group">
+                                                                <div class="_map">
+                                                                    <div class="inputs" ng-show="!inFormView">
+                                                                        <input type="text" class="form-control address" ng-keypress="onEnter($event)" placeholder="{{'field-Address' | translate}}" ng-model="form.address">
+                                                                        <button type="button" class="btn btn-primary" ng-click="formSearch()">
+                                                                            <i class="ion-search"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div id="formMap" class="map"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <button ng-show="!inFormView" type="submit" class="btn btn-blue">{{'field-Save' | translate}}</button>
+                                                            <button type="button" class="btn btn-danger" ng-click="formCancel()">{{'field-Cancel' | translate}}</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-resposive">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>{{'field-Number' | translate}}</th>
+                                            <th>{{'field-Name' | translate}}</th>
+                                            <th>{{'field-Action' | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="unit in units track by $index">
+                                            <td>
+                                                {{$index+1}}
+                                            </td>
+                                            <td>
+                                                {{unit.name}}
+                                            </td>
+                                            <td>
+                                                <button type="button" ng-click="viewUnit(unit)" class="btn btn-info" title="{{'pageUnit-TableActionSee' | translate}}">
+                                                    <i class="ion-eye"></i>
+                                                </button>
+                                                <button type="button" ng-click="editUnit(unit)" class="btn btn-warning" title="{{'field-Edit' | translate}}">
+                                                    <i class="ion-edit"></i>
+                                                </button>
+                                                <button type="button" ng-click="deleteUnit(unit)" class="btn btn-danger" title="{{'field-Delete' | translate}}">
+                                                    <i class="ion-trash-a"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 section">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="homeTitle">
+                                <h1 class="title">{{'pageQuestions-PageTitle' | translate}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-9">
+                            <div class="form-group">
+                                <button type="button" ng-click="questionShowCreate = true" class="btn btn-green form-control">{{'field-Create' | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="questionShowCreate">
+                        <div class="col-xs-12">
+                            <div class="box-gray">
+                                <form action="" name="formRegister" ng-submit="registerQuestion($event)" novalidate>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">{{'field-Question' | translate}}*</label>
+                                                <textarea type="text" class="form-control" ng-model="send.question" maxlength="255" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6">
+                                            <div class="form-group">
+                                                <label for="" class="hidden-xs">&nbsp;</label>
+                                                <button type="submit" class="btn btn-blue form-control">{{'field-Save' | translate}}</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6">
+                                            <div class="form-group">
+                                                <label for="" class="hidden-xs">&nbsp;</label>
+                                                <button type="button" ng-click="questionShowCreate = false" class="btn btn-danger form-control">{{'field-Cancel' | translate}}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr class="hidden-xs hidden-sm "/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-resposive">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>{{'field-Number' | translate}}</th>
+                                            <th>{{'field-Question' | translate}}</th>
+                                            <th>{{'field-Action' | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="question in questions track by $index">
+                                            <td>
+                                                {{$index+1}}
+                                            </td>
+                                            <td>
+                                                {{question.question}}
+                                            </td>
+                                            <td>
+                                                <button type="button" ng-click="viewSchedulerQuestion(question)" class="btn btn-primary" title="{{'field-ViewScheduler' | translate}}">
+                                                    <i class="ion-calendar"></i>
+                                                </button>
+                                                <button type="button" ng-click="deleteQuestion(question)" class="btn btn-danger" title="{{'field-Delete' | translate}}">
+                                                    <i class="ion-trash-a"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

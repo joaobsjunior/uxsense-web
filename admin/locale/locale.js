@@ -1,0 +1,1 @@
+var Locale = Locale || {};

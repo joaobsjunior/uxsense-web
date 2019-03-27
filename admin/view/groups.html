@@ -1,0 +1,96 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 section">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="homeTitle">
+                                <h1 class="title">{{'pageGroup-PageTitle' | translate}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-hide="authData.group">
+                        <div class="col-md-3 col-md-offset-9">
+                            <div class="form-group">
+                                <button type="button" ng-click="groupShowCreate = true" class="btn btn-green form-control">{{'field-Create' | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="groupShowCreate">
+                        <div class="col-xs-12">
+                            <div class="box-gray">
+                                <form action="" name="formRegister" ng-submit="registerGroup($event)" novalidate>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">{{'field-Name' | translate}}*</label>
+                                                <input type="text" class="form-control" ng-model="send.name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6">
+                                            <div class="form-group">
+                                                <label for="" class="hidden-xs">&nbsp;</label>
+                                                <button type="submit" class="btn btn-blue form-control">{{'field-Save' | translate}}</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6">
+                                            <div class="form-group">
+                                                <label for="" class="hidden-xs">&nbsp;</label>
+                                                <button type="button" ng-click="groupShowCreate = false" class="btn btn-danger form-control">{{'field-Cancel' | translate}}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr class="hidden-xs hidden-sm " />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-resposive">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>{{'field-Number' | translate}}</th>
+                                            <th>{{'field-Name' | translate}}</th>
+                                            <th>{{'field-Action' | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="group in groups track by $index">
+                                            <td>
+                                                {{$index+1}}
+                                            </td>
+                                            <td>
+                                                {{group.name}}
+                                                <div class="row" ng-show="group.showEdit">
+                                                    <div class="col-xs-6">
+                                                        <input type="text" class="form-control" ng-model="group._name">
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <button type="button" ng-click="changeGroup(group)" class="btn btn-success">{{'field-Save' | translate}}</button>
+                                                        <button type="button" ng-click="group.showEdit = false" class="btn btn-danger" title="{{'field-Cancel' | translate}}">{{'field-Cancel' | translate}}</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button type="button" ng-click="viewGroup(group)" class="btn btn-info" title="{{'pageGroup-TableActionSee' | translate}}">{{'field-Subgroups' | translate}}</button>
+                                                <button type="button" ng-hide="authData.group" ng-click="group.showEdit = true" class="btn btn-warning" title="{{'field-Edit' | translate}}"><i class="ion-edit"></i></button>
+                                                <button type="button" ng-hide="authData.group" ng-click="deleteGroup(group)" class="btn btn-danger" title="{{'field-Delete' | translate}}"><i class="ion-trash-a"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

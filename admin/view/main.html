@@ -1,0 +1,21 @@
+<div id="loading" ng-class="{'hidden': !isRouteLoading}">
+    <div class="loading">
+        <span>{{'loading' | translate}}</span>
+    </div>
+</div>
+<script type="text/ng-template" id="alertDialog.html">
+    <div class="ngdialog-message">
+        {{message}}
+    </div>
+    <div class="ngdialog-buttons">
+        <div ng-repeat="_btn in btn track by $index">
+           <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm($index+1)">{{_btn[$index]}}</button>
+        </div>
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog()">{{'field-Cancel' | translate}}</button>
+    </div>
+</script>
+<section ng-include="'view/header.html'"></section>
+<div class="view-content" back-animation>
+    <section ui-view="mainContent" class="view-animate fade transition"></section>
+</div>
+<section ng-include="'view/footer.html'"></section>

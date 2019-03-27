@@ -1,0 +1,47 @@
+.view-login {
+    #banner {
+        .breadcrumb {
+            li {
+                display: none;
+            }
+        }
+    }
+    form {
+        color: $grayTextDark;
+        .btn {
+            padding: 0 35px;
+            margin-bottom: 9px;
+        }
+        .form-group {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .help-block {
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &.info {
+                margin: 7px 15px;
+            }
+            a {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+/*---------- TABLET ----------*/
+
+@media (max-width: 991px) {
+    .view-login {
+        form .help-block.info {
+            margin: 7px 0;
+        }
+    }
+}
+
+/*---------- MOBILE ----------*/
+
+@media (max-width: 767px) {}
+@media (max-width: 480px) {}
